@@ -6,7 +6,7 @@
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 19:31:49 by wchae             #+#    #+#             */
-/*   Updated: 2021/07/21 20:11:32 by wchae            ###   ########.fr       */
+/*   Updated: 2021/08/01 04:30:47 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,67 +22,56 @@ size_t	ft_strlen(const char *str)
 	return (len);
 }
 
-char	*ft_strchr(const char *s, int c)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	while (*s != c)
-	{
-		if (*s == '\0')
-			return (NULL);
-		s++;
-	}
-	return ((char *) s);
-}
-
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	size_t		i;
-
-	if (dst == NULL && src == NULL)
-		return (dst);
+	size_t	i;
+	
 	i = 0;
-	while (i < n)
+	if (!src)
+		return (0);
+	if (dstsize)
 	{
-		((unsigned char *)dst)[i] = ((const unsigned char *)src)[i];
-		i++;
+		while (i < dstsize - 1 && src[i])
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	return (dst);
+	while (src[i])
+		i++;
+	return (i);
 }
 
 char	*ft_strdup(const char *s)
 {
 	char	*result;
-	int		len;
+	size_t		len;
 
 	len = ft_strlen(s);
 	result = malloc(sizeof(char) * (len + 1));
 	if (result == NULL)
 		return (NULL);
-	ft_memcpy(result, s, len);
-	result[len] = 0;
+	ft_strlcpy(result, s, len + 1);
 	return (result);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	ft_calloc(char **ptr, size_t cnt, size_t n)
 {
-	char	*result;
-	int		s1_len;
-	int		s2_len;
+	size_t	i;
 
-	if (s1 == NULL && s2 == NULL)
-		return (NULL);
-	if (s1 == NULL || s2 == NULL)
-	{
-		if (s1 == NULL)
-			return (ft_strdup(s2));
-		return (ft_strdup(s1));
-	}
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	result = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
-	if (result == NULL)
-		return (NULL);
-	ft_memcpy(result, s1, s1_len);
-	ft_memcpy(result + s1_len, s2, s2_len + 1);
-	result[s1_len + s2_len + 1] = '\0';
-	return (result);
+	i = -1;
+	*ptr = malloc(cnt * n);
+	if (!*ptr)
+		return (0);
+	while (++i < n)
+		(*ptr)[i] = '\0';
+	return (1);
+}
+
+void	ft_free_ptr(char **ptr)
+{
+	if (*ptr)
+		free(*ptr);
+	*ptr = NULL;
 }
