@@ -6,13 +6,20 @@
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 18:39:36 by wchae             #+#    #+#             */
-/*   Updated: 2021/08/01 05:02:51 by wchae            ###   ########.fr       */
+/*   Updated: 2021/08/01 05:22:27 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
-
+/*
+ *
+ *	newline 전에서 잘림
+ *	\n 도 리턴을 해야함
+ *	nl 1. OK , 2.KO
+ *	no_nl 테스트에서 KO
+ *
+ *
+ * */ 
 static int	ft_append(char **backup, char *buf)
 {
 	char	*prev;
@@ -20,11 +27,11 @@ static int	ft_append(char **backup, char *buf)
 	if (!*backup)
 	{
 		*backup = ft_strdup(buf);
-		if (!*s)
+		if (!*backup)
 			return (0);
 	}
 	prev = ft_strdup(*backup);
-	free_ptr(backup);
+	ft_free_ptr(backup);
 	if (!prev)
 		return (0);
 	if (!ft_calloc(backup, ft_strlen(prev) + ft_strlen(buf) + 1, 1))
@@ -47,7 +54,7 @@ static	int	is_newline(char *backup, int *read_size)
 	{
 		if (backup[i] == '\n')
 		{
-			*read_size = i;
+			*read_size = i + 1;
 			return (1);
 		}
 	}
@@ -80,11 +87,18 @@ static char	*split_line(char **backup, ssize_t read_size)
 	return (line);
 }
 
-static char	*no_newline(char **backup, char *buf, int read_size)
+static char	*no_newline(char **backup, char **buf, int read_size)
 {
 	int		i;
 	char	*line;
 
+/*	if (!*backup)
+	{
+		ft_calloc(&line, 1, sizeof(char));
+		ft_free_ptr(buf);
+		return (line);
+	}
+	*/
 	line = NULL;
 	i = -1;
 	ft_free_ptr(buf);
@@ -101,7 +115,7 @@ static char	*no_newline(char **backup, char *buf, int read_size)
 		backup = NULL;
 		return (line);
 	}
-	if (!ft_calloc(line, 1, sizeof(char)))
+	if (!ft_calloc(&line, 1, sizeof(char)))
 	{
 		ft_free_ptr(backup);
 		return (NULL);
@@ -126,13 +140,13 @@ char	*get_next_line(int fd)
 		buf[read_size] = '\0';
 		if (!ft_append(&backup[fd], buf))
 		{
-			ft_free_ptr(&buf)
+			ft_free_ptr(&buf);
 			return (NULL);
 		}
 		if (is_newline(backup[fd], &read_size))
 		{
 			ft_free_ptr(&buf);
-			return (split_line(&backup[fd], &line, read_size));
+			return (split_line(&backup[fd], read_size));
 		}
 	}
 	return (no_newline(&(backup[fd]), &buf, read_size));
