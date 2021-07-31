@@ -6,7 +6,7 @@
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 19:31:49 by wchae             #+#    #+#             */
-/*   Updated: 2021/08/01 04:30:47 by wchae            ###   ########.fr       */
+/*   Updated: 2021/08/01 05:03:35 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	ft_strlen(const char *str)
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	
+
 	i = 0;
 	if (!src)
 		return (0);
@@ -46,7 +46,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 char	*ft_strdup(const char *s)
 {
 	char	*result;
-	size_t		len;
+	size_t	len;
 
 	len = ft_strlen(s);
 	result = malloc(sizeof(char) * (len + 1));

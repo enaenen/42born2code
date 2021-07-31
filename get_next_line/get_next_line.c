@@ -6,7 +6,7 @@
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 18:39:36 by wchae             #+#    #+#             */
-/*   Updated: 2021/08/01 04:29:58 by wchae            ###   ########.fr       */
+/*   Updated: 2021/08/01 05:02:51 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,85 @@ static int	ft_append(char **backup, char *buf)
 	return (1);
 }
 
+static	int	is_newline(char *backup, int *read_size)
+{
+	int	i;
+
+	i = -1;
+	while (backup[++i])
+	{
+		if (backup[i] == '\n')
+		{
+			*read_size = i;
+			return (1);
+		}
+	}
+	*read_size = -1;
+	return (0);
+}
+
+static char	*split_line(char **backup, ssize_t read_size)
+{
+	char	*line;
+	char	*temp;
+
+	(*backup)[read_size] = '\0';
+	line = ft_strdup(*backup);
+	if (!line)
+	{
+		ft_free_ptr(backup);
+		return (NULL);
+	}
+	if (!ft_strlen(*backup + read_size + 1))
+	{
+		ft_free_ptr(backup);
+		return (line);
+	}
+	temp = *backup;
+	*backup = ft_strdup(*backup + read_size + 1);
+	ft_free_ptr(&temp);
+	if (!*backup)
+		return (NULL);
+	return (line);
+}
+
+static char	*no_newline(char **backup, char *buf, int read_size)
+{
+	int		i;
+	char	*line;
+
+	line = NULL;
+	i = -1;
+	ft_free_ptr(buf);
+	if (read_size < 0)
+	{
+		ft_free_ptr(backup);
+		return (NULL);
+	}
+	if (*backup)
+	{
+		if (is_newline(*backup, &i))
+			return (split_line(backup, i));
+		line = *backup;
+		backup = NULL;
+		return (line);
+	}
+	if (!ft_calloc(line, 1, sizeof(char)))
+	{
+		ft_free_ptr(backup);
+		return (NULL);
+	}
+	return (line);
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*backup[OPEN_MAX];
-	char		*line;
 	char		*buf;
 	int			read_size;
 
-	if (fd < 0 || (BUFFER_SIZE < 1) || OPEN_MAX <= fd ||
-			!ft_calloc(&buf, BUFFER_SIZE + 1, sizeof(char)))
+	if (fd < 0 || (BUFFER_SIZE < 1) || OPEN_MAX <= fd
+		|| !ft_calloc(&buf, BUFFER_SIZE + 1, sizeof(char)))
 		return (NULL);
 	while (1)
 	{
@@ -57,8 +127,13 @@ char	*get_next_line(int fd)
 		if (!ft_append(&backup[fd], buf))
 		{
 			ft_free_ptr(&buf)
-				return (NULL);
+			return (NULL);
+		}
+		if (is_newline(backup[fd], &read_size))
+		{
+			ft_free_ptr(&buf);
+			return (split_line(&backup[fd], &line, read_size));
 		}
 	}
-	return (line);
+	return (no_newline(&(backup[fd]), &buf, read_size));
 }

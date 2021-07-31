@@ -6,7 +6,7 @@
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 20:44:48 by wchae             #+#    #+#             */
-/*   Updated: 2021/08/01 04:30:21 by wchae            ###   ########.fr       */
+/*   Updated: 2021/08/01 05:03:56 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*ft_strdup(const char *s);
-int	ft_calloc(char **ptr, size_t cnt, size_t n);
+int		ft_calloc(char **ptr, size_t cnt, size_t n);
 void	ft_free_ptr(char **ptr);
 char	*get_next_line(int fd);
 
