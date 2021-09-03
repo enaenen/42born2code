@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/03 10:25:58 by wchae             #+#    #+#             */
-/*   Updated: 2021/09/03 14:17:35 by wchae            ###   ########.fr       */
+/*   Created: 2021/09/03 14:20:35 by wchae             #+#    #+#             */
+/*   Updated: 2021/09/03 14:25:17 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static int	get_one_line(char *ptr, char **mem, char **ret)
 {
