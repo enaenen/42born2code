@@ -1,40 +1,41 @@
 #include "ft_printf.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
 
 int print_symbol(va_list ap, const char **format) {
     int len;
 
     len = 0;
+
     (*format)++;
     if (**format == '%')
         len = putchar(**format);
-    else if (**format == 'd')
-        printf("this is Int");
     else if (**format == 'c')
-        printf("this is char");
-
+        printf("print a single character\n");
     else if (**format == 's')
-        printf("this is String");
-
+        printf("print a string of characters\n");
     else if (**format == 'p')
-        printf("this is Int");
-
+        printf("The void * pointer argument is printed in hexadecimal.\n");
+    else if (**format == 'd')
+        printf("print a decimal number(base 10)\n");
     else if (**format == 'i')
-    else if (**format == 'u' || **format == 'x' || **format =='X')
+        printf("print an integer in base 10\n");
+    else if (**format == 'u')
+        printf("print an unsigned decimal (Base 10) number\n");
+    else if (**format == 'x' || **format == 'X')
+        printf("print a Number in hexadecimal (base 16), with lowercase or Uppercase\n");
+
+    return len;
 }
 
-int parse_format(va_list ap, const char *format)
-{
+int parse_format(va_list ap, const char *format) {
     int len;
 
     len = 0;
-    while (*format)
-    {
+    while (*format) {
         if (*format == '%')
-            rt += 0; // print
+        {
+            print_symbol(ap, &format);
+            len += 0; // print
+        }
         else if (*format)
             len += putchar(*format);
         if (*format)
@@ -43,8 +44,7 @@ int parse_format(va_list ap, const char *format)
     return (len);
 }
 
-int ft_printf(const char *format, ...)
-{
+int ft_printf(const char *format, ...) {
     va_list ap;
     int len;
 
