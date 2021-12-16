@@ -7,7 +7,7 @@ gcc -E func.c -o func.o
 
 
 //STEP 2. 컴파일 단계 [*.c -> (*.i) -> *.s]
-gss -S main.c func.c
+gcc -S main.c func.c
 
 //STEP 3. 어셈블 단계 [*.c -> (*.i) -> (*.s) -> *.o ]
 gcc -c main.c func.c
