@@ -4,6 +4,7 @@ int print_symbol(va_list ap, const char **format) {
     int len;
 
     len = 0;
+    ap=NULL;
 
     (*format)++;
     if (**format == '%')
