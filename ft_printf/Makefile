@@ -22,6 +22,10 @@ OBJS = $(SRCS:.c=.o)
 
 LIBFT = libft
 LIBFT_LIB = libft.a
+#INCS = .
+
+%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) #-I$(INCS)
 
 $(NAME) : $(OBJS)
 	make all -C $(LIBFT)/
@@ -38,10 +42,11 @@ fclean : clean
 	rm -rf $(NAME)
 	make fclean -C $(LIBFT)
 
+test : re
+	make all -C $(LIBFT)/
+	$(CC) -o test -g3 $(SRCS) detail_testcase.c -L./libft -l ft
+run_test : test
+	./test
 re : fclean all
-
-
-%.o : %.c
-	$(CC) $(CFLAGS) -c $<
 
 .PHONY : all clean fclean
