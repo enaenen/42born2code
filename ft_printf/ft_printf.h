@@ -14,4 +14,5 @@
 # include "libft/libft.h"
 
 int ft_printf(const char *format, ...);
+char *ft_putnbr_hexbase(unsigned long long num);
 #endif //FT_PRINTF_FT_PRINTF_H

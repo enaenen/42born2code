@@ -1,10 +1,34 @@
 #include "ft_printf.h"
-int ft_print_hex()
+int ft_putuns(unsigned int n, int *len)
 {
+    char tmp;
 
+    if (n < 10)
+    {
+        tmp = n % 10 + '0';
+        *len += write(1, &a, 1);
+    }
+    else
+    {
+        ft_putuns()
+    }
 }
-int ft_print_unsinged (unsigned int format, char symbol)
+int ft_print_unsigned (unsigned int n, char format)
 {
+    char *hex;
+    int len;
+    int i;
+
+    len = 0;
+    i = 0;
+    if (format == 'u')
+        ft_putuns(n, &len);
+    else
+    {
+        ft_putnbr_hexbase(n);
+        // BASE HEX
+        // BASE I
+    }
     return (-1);
 }
 void ft_putnbr(int n, int *len)
@@ -37,12 +61,12 @@ void ft_putnbr(int n, int *len)
 }
 
 
-int ft_print_number(int format)
+int ft_print_number(int n)
 {
     int len;
 
     len = 0;
-    ft_putnbr(format, &len);
+    ft_putnbr(n, &len);
     return (len);
 }
 
@@ -73,11 +97,8 @@ int print_symbol(va_list ap, const char **format) {
         printf("The void * pointer argument is printed in hexadecimal.\n");
     else if (**format == 'd' || **format == 'i')
         len = ft_print_number(va_arg(ap, int));
-    else if (**format == 'u')
-        len = ft_print_unsinged(va_arg(ap, unsigned int), **format);
-    else if (**format == 'x' || **format == 'X')
-        len = ft_print_hex(va_arg(ap, ))
-        printf("print a Number in hexadecimal (base 16), with lowercase or Uppercase\n");
+    else if (**format == 'u' || **format == 'x' || **format == 'X')
+        len = ft_print_unsigned(va_arg(ap, unsigned long long), **format);
     else if (!**format)
         return (0);
     return len;
