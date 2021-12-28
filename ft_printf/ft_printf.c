@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+
 int ft_putuns(unsigned int n, int *len)
 {
     char tmp;
@@ -10,10 +11,13 @@ int ft_putuns(unsigned int n, int *len)
     }
     else
     {
-        ft_putuns()
+        ft_putuns(n / 10, len);
+        tmp = n % 10 + '0';
+        *len += write(1, &tmp, 1);
     }
 }
-int ft_print_unsigned (unsigned int n, char format)
+
+int ft_print_unsigned(unsigned int n, char format)
 {
     char *hex;
     int len;
@@ -25,23 +29,33 @@ int ft_print_unsigned (unsigned int n, char format)
         ft_putuns(n, &len);
     else
     {
-        ft_putnbr_hexbase(n);
-        // BASE HEX
-        // BASE I
+        hex = ft_putnbr_hexbase((unsigned long long) n);
+        if (!hex)
+            return (0);
+        if (format == 'X')
+        {
+            while (hex[i])
+            {
+                hex[i] = (char) ft_toupper(hex[i]);
+                i++;
+            }
+        }
+            len = ft_putstr(hex);
+            free(hex);
     }
-    return (-1);
+    return (len);
 }
+
 void ft_putnbr(int n, int *len)
 {
-
     if (n == -2147483648)
     {
-        *len = write(1,"-2147483648", 11);
-        return ;
+        *len = write(1, "-2147483648", 11);
+        return;
     }
     else if (n < 0)
     {
-        *len += write(1,"-", 1);
+        *len += write(1, "-", 1);
         n *= -1;
         ft_putnbr(n, len);
     }
@@ -82,7 +96,8 @@ int ft_print_string(char *str)
     return (len);
 }
 
-int print_symbol(va_list ap, const char **format) {
+int print_symbol(va_list ap, const char **format)
+{
     int len;
 
     len = 0;
@@ -92,27 +107,31 @@ int print_symbol(va_list ap, const char **format) {
     else if (**format == 'c')
         len = ft_putchar(va_arg(ap, int));
     else if (**format == 's')
-        len = ft_print_string(va_arg(ap, char*));
+        len = ft_print_string(va_arg(ap,char*));
     else if (**format == 'p')
         printf("The void * pointer argument is printed in hexadecimal.\n");
     else if (**format == 'd' || **format == 'i')
         len = ft_print_number(va_arg(ap, int));
     else if (**format == 'u' || **format == 'x' || **format == 'X')
-        len = ft_print_unsigned(va_arg(ap, unsigned long long), **format);
+        len = ft_print_unsigned(va_arg(ap,unsigned int), **format);
     else if (!**format)
         return (0);
     return len;
 }
 
-int parse_format(va_list ap, const char *format) {
+int parse_format(va_list ap, const char *format)
+{
     int len;
 
     len = 0;
-    while (*format) {
-        if (*format == '%') {
+    while (*format)
+    {
+        if (*format == '%')
+        {
             print_symbol(ap, &format);
             len += 0; // print
-        } else if (*format)
+        }
+        else if (*format)
             len += ft_putchar(*format);
         if (*format)
             format++;
@@ -120,7 +139,8 @@ int parse_format(va_list ap, const char *format) {
     return (len);
 }
 
-int ft_printf(const char *format, ...) {
+int ft_printf(const char *format, ...)
+{
     va_list ap;
     int len;
 

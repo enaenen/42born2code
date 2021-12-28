@@ -1,7 +1,9 @@
 #include "ft_printf.h"
 
-void    ft_hexlen(unsigned long long n, int *len) {
-    while (n > 0) {
+void    ft_hexlen(unsigned long long n, int *len)
+{
+    while (n > 0)
+    {
         n = n / 16;
         (*len)++;
     }
@@ -9,7 +11,8 @@ void    ft_hexlen(unsigned long long n, int *len) {
 
 void    ft_hexbase(char *str, int *i, unsigned long long num)
 {
-    if (num < 16) {
+    if (num < 16)
+    {
         str[*i] = "0123456789abcdef"[num];
         (*i)++;
         return;
