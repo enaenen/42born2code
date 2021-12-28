@@ -13,6 +13,8 @@
 # include <string.h>
 # include "libft/libft.h"
 
+int ft_print_number(int n);
+int ft_print_unsigned(unsigned int n, char format);
 char *ft_putnbr_hexbase(unsigned long long num);
 int ft_printf(const char *format, ...);
 #endif //FT_PRINTF_FT_PRINTF_H

@@ -17,7 +17,7 @@ ARFLAGS = -rc
 
 NAME = 	libftprintf.a
 
-SRCS = ft_printf.c hex_util.c
+SRCS = ft_printf.c hex_util.c print_nbr_util.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT = libft
@@ -45,7 +45,7 @@ fclean : clean
 test : all
 	make all -C $(LIBFT)/
 	$(CC) -o test -g3 $(SRCS) detail_testcase.c -L./libft -l ft
-run_test : test
+run_test : test clean
 	./test
 re : fclean all
 
