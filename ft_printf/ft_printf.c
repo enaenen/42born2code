@@ -1,13 +1,13 @@
 #include "ft_printf.h"
 
-int ft_putuns(unsigned int n, int *len)
+void ft_putuns(unsigned int n, int *len)
 {
     char tmp;
 
     if (n < 10)
     {
         tmp = n % 10 + '0';
-        *len += write(1, &a, 1);
+        *len += write(1, &tmp, 1);
     }
     else
     {

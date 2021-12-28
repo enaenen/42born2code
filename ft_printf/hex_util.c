@@ -19,7 +19,7 @@ void    ft_hexbase(char *str, int *i, unsigned long long num)
     }
     else
     {
-        ft_hexbase(arr, i, num / 16);
+        ft_hexbase(str, i, num / 16);
         str[*i] = "0123456789abcdef"[num % 16];
         (*i)++;
         return;
@@ -33,17 +33,19 @@ char    *to_string(unsigned int n)
 
     len = 0;
     ft_hexlen(n, &len);
-    arr = (char *) malloc(sizeof(char) * (len + 1))
+    arr = (char *) malloc(sizeof(char) * (len + 1));
     if (!arr)
         return (0);
+    return arr;
 }
 
 char    *ft_putnbr_hexbase(unsigned long long num)
 {
-    int     i;
-    char    *hex;
+    int i;
+    char *hex;
 
-    len = 0;
+    i = 0;
+
     hex = to_string(num);
     if (!hex)
         return (0);
