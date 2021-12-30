@@ -6,7 +6,7 @@
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 01:30:55 by wchae             #+#    #+#             */
-/*   Updated: 2021/05/26 04:26:09 by wchae            ###   ########.fr       */
+/*   Updated: 2021/12/30 17:18:25 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	size_t cnt;
+	size_t	cnt;
 
 	cnt = 0;
 	while (lst)

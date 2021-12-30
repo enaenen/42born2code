@@ -1,12 +1,22 @@
-//
-// Created by Woo Joo Chae on 2021/12/17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/30 17:11:53 by wchae             #+#    #+#             */
+/*   Updated: 2021/12/30 17:13:04 by wchae            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int ft_putchar(char c) {
-    int len;
+int	ft_putchar(char c)
+{
+	int	len;
 
-    len = 0;
-    len = write(1, &c, 1);
-    return (len);
+	len = 0;
+	len = write(1, &c, 1);
+	return (len);
 }

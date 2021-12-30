@@ -6,7 +6,7 @@
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 04:43:22 by wchae             #+#    #+#             */
-/*   Updated: 2021/05/26 04:47:04 by wchae            ###   ########.fr       */
+/*   Updated: 2021/12/30 17:01:47 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list *buf;
+	t_list	*buf;
 
 	if (!lst || !del)
 		return ;

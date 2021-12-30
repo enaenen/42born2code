@@ -6,7 +6,7 @@
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 04:35:23 by wchae             #+#    #+#             */
-/*   Updated: 2021/05/26 07:44:09 by wchae            ###   ########.fr       */
+/*   Updated: 2021/12/30 17:01:32 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list *buf;
+	t_list	*buf;
 
 	if (!lst || !new)
 		return ;

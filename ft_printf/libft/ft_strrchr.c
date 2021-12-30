@@ -6,7 +6,7 @@
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 02:42:35 by wchae             #+#    #+#             */
-/*   Updated: 2021/05/26 22:57:40 by wchae            ###   ########.fr       */
+/*   Updated: 2021/12/30 17:03:00 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char *res;
+	char	*res;
 
 	res = 0;
 	while (1)

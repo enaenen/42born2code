@@ -6,10 +6,9 @@
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 00:18:43 by wchae             #+#    #+#             */
-/*   Updated: 2021/05/26 00:24:06 by wchae            ###   ########.fr       */
+/*   Updated: 2021/12/30 17:09:48 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 static size_t	ft_wordcnt(const char *s, char c)
@@ -31,7 +30,7 @@ static size_t	ft_wordcnt(const char *s, char c)
 	return (cnt);
 }
 
-static char		**ft_free(char **res, int i)
+static char	**ft_free(char **res, int i)
 {
 	while (--i >= 0 && res[i])
 	{
@@ -43,23 +42,25 @@ static char		**ft_free(char **res, int i)
 	return (NULL);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char		**res;
 	char		*from;
 	size_t		i;
 
-	if (!s || !(res = (char**)malloc(sizeof(char*) * (ft_wordcnt(s, c) + 1))))
+	res = (char **)malloc(sizeof(char *) * (ft_wordcnt(s, c) + 1));
+	if (!s || !res)
 		return (NULL);
 	i = 0;
 	while (*s)
 	{
 		if (*s != c)
 		{
-			from = (char*)s;
+			from = (char *)s;
 			while (*s && *s != c)
 				s++;
-			if (!(res[i] = (char*)malloc(s - from + 1)))
+			res[i] = (char *)malloc(s - from + 1);
+			if (!res[i])
 				return (ft_free(res, i));
 			ft_strlcpy(res[i++], from, s - from + 1);
 		}

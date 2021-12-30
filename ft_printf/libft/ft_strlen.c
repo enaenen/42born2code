@@ -6,7 +6,7 @@
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 18:51:33 by wchae             #+#    #+#             */
-/*   Updated: 2021/05/09 20:05:33 by wchae            ###   ########.fr       */
+/*   Updated: 2021/12/30 17:04:21 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t count;
+	size_t	count;
 
 	count = 0;
 	while (s[count])

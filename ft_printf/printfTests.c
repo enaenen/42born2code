@@ -4,7 +4,6 @@
 
 int main()
 {
-
 	int *p;
 	printf("hex = %x \n", 15);
 	printf("Null Pointer = %p \n", p);

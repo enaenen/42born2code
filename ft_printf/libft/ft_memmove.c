@@ -6,7 +6,7 @@
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 19:21:45 by wchae             #+#    #+#             */
-/*   Updated: 2021/05/20 14:21:37 by wchae            ###   ########.fr       */
+/*   Updated: 2021/12/30 17:13:29 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	void *res;
+	void	*res;
 
 	if (!dst && !src)
 		return (0);

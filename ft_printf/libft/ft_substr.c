@@ -6,7 +6,7 @@
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 03:24:36 by wchae             #+#    #+#             */
-/*   Updated: 2021/05/27 14:56:11 by wchae            ###   ########.fr       */
+/*   Updated: 2021/12/30 17:02:43 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (s_len < len)
 		len = s_len;
-	if (!(buf = (char *)malloc(++len)))
+	buf = (char *)malloc(++len);
+	if (!buf)
 		return (NULL);
 	ft_strlcpy(buf, s + start, len);
 	return (buf);

@@ -6,7 +6,7 @@
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:15:05 by wchae             #+#    #+#             */
-/*   Updated: 2021/05/21 16:25:43 by wchae            ###   ########.fr       */
+/*   Updated: 2021/12/30 17:04:05 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s || !f)
 		return (NULL);
 	len = ft_strlen(s);
-	if (!(buf = (char *)malloc(len + 1)))
+	buf = (char *)malloc(len + 1);
+	if (!buf)
 		return (NULL);
 	i = 0;
 	while (s[i])

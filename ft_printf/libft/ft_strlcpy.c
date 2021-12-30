@@ -6,7 +6,7 @@
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 02:04:03 by wchae             #+#    #+#             */
-/*   Updated: 2021/05/27 14:13:30 by wchae            ###   ########.fr       */
+/*   Updated: 2021/12/30 17:04:33 by wchae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t index;
+	size_t	index;
 
 	index = 0;
 	if (dstsize)
