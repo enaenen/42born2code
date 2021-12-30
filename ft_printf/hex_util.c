@@ -26,7 +26,7 @@ void    ft_hexbase(char *str, int *i, unsigned long long num)
     }
 }
 
-char    *to_string(unsigned int n)
+char    *to_string(unsigned long long n)
 {
     char *arr;
     int len;
@@ -45,7 +45,6 @@ char    *ft_putnbr_hexbase(unsigned long long num)
     char *hex;
 
     i = 0;
-
     hex = to_string(num);
     if (!hex)
         return (0);

@@ -15,15 +15,14 @@ int ft_print_string(char *str)
 int ft_print_pointer(unsigned long long p)
 {
     int len;
-    int *pointer;
+    char *pointer;
 
-    len = 0;
     if (!p)
     {
-        rt = ft_putstr("0x0");
-        return rt;
+        len = ft_putstr("0x0");
+        return len;
     }
-    pointer = to_hexbase(p);
+    pointer = ft_putnbr_hexbase(p);
     if (!pointer)
         return (0);
     len = ft_putstr("0x");
@@ -45,7 +44,7 @@ int print_symbol(va_list ap, const char **format)
     else if (**format == 's')
         len = ft_print_string(va_arg(ap,char*));
     else if (**format == 'p')
-        len = ft_print_pointer(va_arg(ap, unsinged long long));
+        len = ft_print_pointer(va_arg(ap, unsigned long long));
     else if (**format == 'd' || **format == 'i')
         len = ft_print_number(va_arg(ap, int));
     else if (**format == 'u' || **format == 'x' || **format == 'X')
@@ -63,10 +62,7 @@ int parse_format(va_list ap, const char *format)
     while (*format)
     {
         if (*format == '%')
-        {
-            print_symbol(ap, &format);
-            len += 0; // print
-        }
+            len += print_symbol(ap, &format);
         else if (*format)
             len += ft_putchar(*format);
         if (*format)

@@ -67,14 +67,14 @@ void ft_putnbr(int n, int *len)
     {
         char tmp;
         tmp = n % 10 + '0';
-        *len = write(1, &tmp, 1);
+        *len += write(1, &tmp, 1);
     }
     else
     {
         char tmp;
         ft_putnbr(n / 10, len);
         tmp = n % 10 + '0';
-        *len = write(1, &tmp, 1);
+        *len += write(1, &tmp, 1);
     }
 }
 
