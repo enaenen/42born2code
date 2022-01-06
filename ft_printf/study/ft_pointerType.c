@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_pointerType.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wchae <wchae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 14:33:17 by wchae             #+#    #+#             */
-/*   Updated: 2022/01/05 14:35:44 by wchae            ###   ########.fr       */
+/*   Created: 2022/01/05 13:54:39 by wchae             #+#    #+#             */
+/*   Updated: 2022/01/05 14:58:56 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <stdio.h>
 
-# include "libft/libft.h"
-# include <stdarg.h>
-# include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
+int main(void)
+{
+	int a;
+	int *ptr;
 
-int		ft_print_number(int n);
-int		ft_print_unsigned(unsigned int n, char format);
-char	*ft_putnbr_hexbase(unsigned long long num);
-int		ft_printf(const char *format, ...);
-#endif
+	a = 999;
+	ptr = &a;
+
+	
+	printf("%p\n", ptr);
+	printf("%p\n", &a);
+	printf("%u\n", &ptr);
+}
