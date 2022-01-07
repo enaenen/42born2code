@@ -27,14 +27,30 @@ size_t	ft_strlen(char	*str)
 char	*ft_strndup(const char *s1, size_t n)
 {
 	char	*dup_str;
+	char	*ret;
 
-	dup_str = (char *) malloc(sizeof(char) * (n + 1));
-	if (!dup_str)
+	ret = (char *) malloc(sizeof(char) * (n + 1));
+	if (!ret)
 		return (NULL);
+	dup_str = ret;
 	while (n--)
 		*dup_str++ = *s1++;
 	*dup_str = '\0';
-	return (dup_str);
+	return (ret);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	char	*src;
+
+	src = s;
+	while (*src)
+	{
+		if (*src == c)
+			return (src);
+		src++;
+	}
+	return (NULL);
 }
 
 char	*get_next_line(int fd)
