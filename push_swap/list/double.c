@@ -1,27 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct _node
+typedef struct s_node
 {
-	struct	_node	*llink;
-	struct	_node	*rlink;
+	struct	s_node	*llink;
+	struct	s_node	*rlink;
 	int	data;
-} s_node;
+}	t_node;
 
 
-s_node	*make_node(int value)
+t_node	*make_node(int value)
 {
-	s_node	*node = (s_node*)malloc(sizeof(s_node));
+	t_node	*node = (t_node*)malloc(sizeof(t_node));
 	node->llink = NULL;
 	node->rlink = NULL;
 	node->data = value;
 	return node;
 }
 
-void	init(s_node **head, s_node **tail)
+void	init(t_node **head, t_node **tail)
 {
-	*head = (s_node*)malloc(sizeof(s_node));
-	*tail = (s_node*)malloc(sizeof(s_node));
+	*head = (t_node*)malloc(sizeof(t_node));
+	*tail = (t_node*)malloc(sizeof(t_node));
 	(*head)->data = 0;
 	(*tail)->data = 0;
 
@@ -31,19 +31,19 @@ void	init(s_node **head, s_node **tail)
 	(*tail)->llink = *head;
 }
 
-void	push_back(s_node **tail, int value)
+void	push_back(t_node **tail, int value)
 {
-	s_node	*new_node = make_node(value);
-	s_node	*p;
+	t_node	*new_node = make_node(value);
+	t_node	*p;
 	p = *tail;
 	p->llink->rlink = new_node;
 	p->llink = new_node;
 	new_node->rlink = p;
 }
 
-void	print_node(s_node **head, s_node **tail)
+void	print_node(t_node **head, t_node **tail)
 {
-	s_node	*p;
+	t_node	*p;
 	p = *head;
 	while (p->rlink != (*tail))
 	{
@@ -55,9 +55,8 @@ void	print_node(s_node **head, s_node **tail)
 
 int	main(int argc, char **argv)
 {
-	s_node	*head;
-	s_node	*tail;
-
+	t_node	*head;
+	t_node	*tail;
 
 	init(&head, &tail);
 	push_back(&tail, 1);
@@ -65,5 +64,5 @@ int	main(int argc, char **argv)
 	push_back(&tail, 3);
 	push_back(&tail, 4);
 	print_node(&head, &tail);
-	return 0;
+
 }
