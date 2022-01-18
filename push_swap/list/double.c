@@ -53,10 +53,38 @@ void	print_node(t_node **head, t_node **tail)
 	printf("%d\n", p->data);
 }
 
+bool	ft_atoi(char **str)
+{
+	int	sign;
+	
+	//space 띄기 
+	//+- 구분
+	//숫자아니면 false
+	//digit 일동안, 
+	//overflow check
+
+	while (ft_isspace(**s))
+		++(*str);
+	sign = 1;
+
+	if (**str == '+' || **str == '-')
+		if (*((*str)++) == '-')
+			sign = -1;
+	if (!ft_isdigit(**s))
+		return (false);
+
+	
+
+}
+
 int	main(int argc, char **argv)
 {
 	t_node	*head;
 	t_node	*tail;
+	size_t	index;
+	if (argc <= 1)
+		return -1;
+
 
 	init(&head, &tail);
 	push_back(&tail, 1);
@@ -64,5 +92,5 @@ int	main(int argc, char **argv)
 	push_back(&tail, 3);
 	push_back(&tail, 4);
 	print_node(&head, &tail);
-
+	
 }
