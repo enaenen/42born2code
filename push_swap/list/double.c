@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <stdbool.h>
+#include <limits.h>
 typedef struct s_node
 {
 	struct	s_node	*llink;
@@ -53,44 +54,68 @@ void	print_node(t_node **head, t_node **tail)
 	printf("%d\n", p->data);
 }
 
-bool	ft_atoi(char **str)
+bool	ft_isspace(int c)
+{
+	return (c == ' ' || c == '\n' || c == '\r'
+			|| c =='\v' || c == '\f' || c == '\t');
+}
+bool	ft_isdigit(int c)
+{
+	return ('0' <= c || '9' <= c);	
+}
+
+bool	ft_atoi(char **str, int *num)
 {
 	int	sign;
+	long long	tmp;
 	
-	//space 띄기 
+	//space 띄기
 	//+- 구분
 	//숫자아니면 false
 	//digit 일동안, 
 	//overflow check
 
-	while (ft_isspace(**s))
+	while (ft_isspace(**str))
 		++(*str);
 	sign = 1;
-
 	if (**str == '+' || **str == '-')
 		if (*((*str)++) == '-')
 			sign = -1;
-	if (!ft_isdigit(**s))
+	if (!ft_isdigit(**str))
 		return (false);
-
+	while (ft_isdigit(**str))
+	{
+		tmp = (*((*str)++) - '0');
+		if (sign < 0)
+			tmp = ~(tmp) + 1;
+		tmp = *num * 10 + tmp;
+		if (INT_MAX < tmp || tmp < INT_MIN)
+			return (false);
+		*num = (int) tmp;
+	}
+	return (true);
 	
-
 }
-
 int	main(int argc, char **argv)
 {
 	t_node	*head;
 	t_node	*tail;
+	int	*inputs;
+	int	num;
 	size_t	index;
+
+	index = 0;
 	if (argc <= 1)
 		return -1;
-
-
+	inputs = malloc(argc * sizeof(int));
 	init(&head, &tail);
-	push_back(&tail, 1);
-	push_back(&tail, 2);
-	push_back(&tail, 3);
-	push_back(&tail, 4);
+	while (index <= argc)
+	{
+		ft_atoi(argv,&inputs[index]);
+		push_back(&tail, inputs[index]);
+		index++;
+	}
+	//push_back(&tail, 4);
 	print_node(&head, &tail);
-	
+
 }
