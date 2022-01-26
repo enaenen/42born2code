@@ -107,7 +107,12 @@ int	main(int argc, char **argv)
 	index = 0;
 	if (argc <= 1)
 		return -1;
-	inputs = malloc(argc * sizeof(int));
+	while (++index != argc)
+	{
+		ft_atoi(&argv[index], &num);
+		printf(" num = %d ", num);
+	}
+	/*inputs = malloc(argc * sizeof(int));
 	init(&head, &tail);
 	while (index <= argc)
 	{
@@ -115,7 +120,8 @@ int	main(int argc, char **argv)
 		push_back(&tail, inputs[index]);
 		index++;
 	}
+	*/
 	//push_back(&tail, 4);
-	print_node(&head, &tail);
+	//print_node(&head, &tail);
 
 }
