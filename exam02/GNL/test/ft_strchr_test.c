@@ -10,5 +10,5 @@ int main(void)
 	char c;
 	printf("%p == %p \n", NULL, strchr(str, c));
 
-	printf("%p == %p \n", NULL, strchr(NULL, ''));
+	// printf("%p == %p \n", NULL, strchr(NULL, 'x'));
 }

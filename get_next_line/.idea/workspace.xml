@@ -7,10 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a3ef90dc-ab51-4a3e-b813-1cb2dd63b5c7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../ft_printf/libft/libft.h" beforeDir="false" afterPath="$PROJECT_DIR$/../ft_printf/libft/libft.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ft_printf/submit/ft_printf.c" beforeDir="false" afterPath="$PROJECT_DIR$/../ft_printf/submit/ft_printf.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ft_printf/submit/ft_printf.h" beforeDir="false" afterPath="$PROJECT_DIR$/../ft_printf/submit/ft_printf.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ft_printf/submit/hex_util.c" beforeDir="false" afterPath="$PROJECT_DIR$/../ft_printf/submit/hex_util.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../push_swap/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../push_swap/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../push_swap/list/double.c" beforeDir="false" afterPath="$PROJECT_DIR$/../push_swap/list/double.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +46,8 @@
       <option name="presentableId" value="Default" />
       <updated>1641188108651</updated>
       <workItem from="1641188110065" duration="507000" />
-      <workItem from="1641460311147" duration="2246000" />
+      <workItem from="1641460311147" duration="2525000" />
+      <workItem from="1642495271501" duration="31000" />
     </task>
     <servers />
   </component>
