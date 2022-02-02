@@ -1,5 +1,4 @@
 #include "./mlx/mlx.h"
-#include <stdio.h>
 
 typedef struct s_data{
     void    *img;
@@ -27,15 +26,11 @@ int main(void)
     mlx_win = mlx_new_window(mlx, 800, 600, "mlx_42?");
     img.img = mlx_new_image(mlx_win, 800, 600);
     img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-    for (int i=0; i<300; i++){
-     my_mlx_pixel_put(&img, i, i, 0xABCDEF);
-     my_mlx_pixel_put(&img, 5, i, 0xABCDEF);
-     my_mlx_pixel_put(&img, i, 5, 0xABCDEF);
+    for (int i=0; i<500; i++){
+     my_mlx_pixel_put(&img, i, i, 0x00FF0000);
+     my_mlx_pixel_put(&img, 5, i, 0x00FF0000);
+     my_mlx_pixel_put(&img, i, 5, 0x00FF0000);
     }
-    printf("%d\n", img.endian);
-    printf("%s\n", img.addr);
-    printf("%d\n", img.bits_per_pixel);
-    printf("%d\n", img.line_length);
     mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
     mlx_loop(mlx);
 }

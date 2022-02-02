@@ -2,20 +2,19 @@
 // str 2 wordtab & co
 // by ol
 
-
 #include <stdlib.h>
 #include <string.h>
 
-int	mlx_int_str_str(char *str,char *find,int len)
+int	mlx_int_str_str(char *str, char *find, int len)
 {
-  int	len_f;
-  int	pos;
-  char	*s;
-  char	*f;
+	int		len_f;
+	int		pos;
+	char	*s;
+	char	*f;
 
-  len_f = strlen(find);
-  if (len_f>len)
-    return (-1);
+	len_f = strlen(find);
+	if (len_f > len)
+		return (-1);
   pos = 0;
   while (*(str+len_f-1))
     {
