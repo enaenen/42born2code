@@ -36,7 +36,7 @@ typedef struct	s_game
 	
 	int	map[ROWS][COLS];
 }		t_game;
-
+//DDA Algorithm
 void	draw_line(t_game *game, double x1, double y1, double x2, double y2)
 {
 	double deltaX;
